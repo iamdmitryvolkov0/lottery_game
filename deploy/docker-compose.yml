@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  lumen:
+    image: php:8.3-fpm-alpine
+    container_name: lumen
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../project:/var/www/html
+    networks:
+      - lumen_network
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    container_name: lumen_db
+    restart: always
+    environment:
+      POSTGRES_DB: sputnik
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - lumen_network
+
+networks:
+  lumen_network:
+
+volumes:
+  postgres_data:
