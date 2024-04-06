@@ -24,8 +24,6 @@ services:
     volumes:
       - ../project:/var/www
     environment:
-      - "DB_PORT=5432"
-      - "DB_HOST=pgsql"
       - "COMPOSER_MEMORY_LIMIT=-1"
     networks:
       - lumen_network
