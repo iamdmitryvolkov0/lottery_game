@@ -1,13 +1,32 @@
 version: '3.7'
 
 services:
-  lumen:
-    image: php:8.3-fpm-alpine
-    container_name: lumen
-    ports:
-      - "8000:8000"
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     volumes:
-      - ../project:/var/www/html
+      - ./:/var/www
+    environment:
+      - "DB_PORT=5432"
+      - "DB_HOST=pgsql"
+      - "XDG_CONFIG_HOME=/app"
+    ports:
+      - "80:80"
+    depends_on:
+      - lumen
+
+  lumen:
+    build:
+      context: ./php-fpm
+      dockerfile: Dockerfile
+    container_name: lumen
+    volumes:
+      - ../project:/var/www
+    environment:
+      - "DB_PORT=5432"
+      - "DB_HOST=pgsql"
+      - "COMPOSER_MEMORY_LIMIT=-1"
     networks:
       - lumen_network
     depends_on:
