@@ -9,7 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-/**  */
+/**
+ * @property int $id Идентификатор модели
+ * @property int $user_id Идентификтор пользователя
+ * @property int $lottery_game_match_id Идентификатор матча
+ */
 class LotteryGameMatchUser extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
