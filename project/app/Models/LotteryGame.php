@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-/**  */
+/**
+ * @property int $id Идентификатор игры
+ * @property string $name Название игры
+ * @property int $gamer_count Количество игроков
+ * @property int $reward_points Количество баллов за победу
+ */
 class LotteryGame extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
