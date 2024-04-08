@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\LotteryGameActions\CreateLotteryGameAction;
+use App\Actions\LotteryGameActions\CreateLotteryGameMatchAction;
 use App\Actions\LotteryGameActions\CreateLotteryGameMatchUsersAction;
 use App\Actions\LotteryGameActions\FinishLotteryGameAction;
 use App\Actions\LotteryGameActions\GetAllLotteryGamesAction;
 use App\Actions\LotteryGameActions\GetLotteryGameMatchByGameIdAction;
 use App\Models\LotteryGame;
+use App\Models\LotteryGameMatch;
 use App\Models\LotteryGameMatchUser;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LotteryGameController extends Controller
@@ -19,7 +21,7 @@ class LotteryGameController extends Controller
         return $action->execute();
     }
 
-    public function createMatch(CreateLotteryGameAction $action, Request $request): LotteryGame
+    public function createMatch(CreateLotteryGameMatchAction $action, Request $request): LotteryGameMatch|JsonResponse
     {
         return $action->execute($request->query());
     }
