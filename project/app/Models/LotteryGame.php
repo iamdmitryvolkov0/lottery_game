@@ -14,6 +14,7 @@ use Laravel\Lumen\Auth\Authorizable;
  * @property string $name Название игры
  * @property int $gamer_count Количество игроков
  * @property int $reward_points Количество баллов за победу
+ * @property bool $is_finished Статус игры
  */
 class LotteryGame extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -28,6 +29,7 @@ class LotteryGame extends Model implements AuthenticatableContract, Authorizable
         'name',
         'gamer_count',
         'reward_points',
+        'is_finished'
     ];
 
     /**

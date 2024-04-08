@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use App\Actions\CreateUserAction;
-use App\Actions\DeleteUserAction;
-use App\Actions\GetAllUsersAction;
-use App\Actions\UpdateUserAction;
+use App\Actions\UserActions\CreateUserAction;
+use App\Actions\UserActions\DeleteUserAction;
+use App\Actions\UserActions\GetAllUsersAction;
+use App\Actions\UserActions\UpdateUserAction;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;

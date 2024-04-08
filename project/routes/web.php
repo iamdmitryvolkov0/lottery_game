@@ -22,7 +22,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->get('/lottery_games', 'LotteryGameController@getAllGames');
     $router->post('/lottery_game_matches', 'LotteryGameController@createMatch');
-    $router->put('/lottery_game_matches/{id}', 'LotteryGameController@updateMatch');
+    $router->put('/lottery_game_matches/{id}', 'LotteryGameController@finishMatch');
     $router->post('/lottery_game_match_users', 'LotteryGameController@createMatchUser');
-    $router->get('/lottery_game_matches/{lottery_game_id}','LotteryGameController@getMatchesByLotteryId');
+    $router->get('/lottery_game_matches/{game_id}','LotteryGameController@getMatchesByGameId');
 });
