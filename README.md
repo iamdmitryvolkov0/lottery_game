@@ -17,5 +17,6 @@
       <li>Для работы с командной строкой <code>docker compose exec lumen sh</code></li> 
       <li>Установите требуемые зависимости командой <code>composer install</code></li>
       <li>Выполните миграции <code>php artisan migrate</code>, чтобы создать в БД необходимые таблицы.</li>
+      <li>Запустите Seeders <code>php artisan db:seed</code>, чтобы БД данными.</li>
      </ol>
 </body>
