@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Actions\UserActions\CreateUserAction;
 use App\Actions\UserActions\DeleteUserAction;
 use App\Actions\UserActions\GetAllUsersAction;
@@ -22,11 +21,6 @@ class UserController extends Controller
     public function register(CreateUserAction $action, Request $request): JsonResponse|User
     {
         return $action->execute($request->query());
-    }
-
-    public function login()
-    {
-
     }
 
     public function update(UpdateUserAction $action, int $id, Request $request): JsonResponse|User

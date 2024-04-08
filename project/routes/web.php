@@ -13,16 +13,26 @@
 |
 */
 
-$router->group(['prefix' => 'api'], function () use ($router) {
-    $router->post('/users/register', 'UserController@register');
-    $router->post('/users/login', 'UserController@login');
-    $router->put('/users/{id}', 'UserController@update');
-    $router->delete('/users/{id}', 'UserController@delete');
-    $router->get('/users', 'UserController@getAllUsers');
+use Illuminate\Support\Facades\Route;
 
-    $router->get('/lottery_games', 'LotteryGameController@getAllGames');
-    $router->post('/lottery_game_matches', 'LotteryGameController@createMatch');
-    $router->put('/lottery_game_matches/{id}', 'LotteryGameController@finishMatch');
-    $router->post('/lottery_game_match_users', 'LotteryGameController@createMatchUser');
-    $router->get('/lottery_game_matches/{game_id}','LotteryGameController@getMatchesByGameId');
+Route::group(['prefix' => 'api'], function () {
+    Route::post('/users/register', 'UserController@register');
+    Route::put('/users/{id}', 'UserController@update');
+    Route::delete('/users/{id}', 'UserController@delete');
+    Route::get('/users', 'UserController@getAllUsers');
+
+    Route::get('/lottery_games', 'LotteryGameController@getAllGames');
+    Route::post('/lottery_game_matches', 'LotteryGameController@createMatch');
+    Route::put('/lottery_game_matches/{id}', 'LotteryGameController@finishMatch');
+    Route::post('/lottery_game_match_users', 'LotteryGameController@createMatchUser');
+    Route::get('/lottery_game_matches/{game_id}', 'LotteryGameController@getMatchesByGameId');
+
+    Route::group([
+        'prefix' => 'auth'
+    ], function () {
+        Route::post('/login', 'AuthController@login');
+        Route::post('/logout', 'AuthController@logout');
+        Route::post('/refresh', 'AuthController@refresh');
+        Route::get('/me', 'AuthController@me');
+    });
 });

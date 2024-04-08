@@ -1,12 +1,14 @@
 {
     "name": "laravel/lumen",
     "description": "The Laravel Lumen Framework.",
+    "version": "1.0",
     "keywords": ["framework", "laravel", "lumen"],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": "^8.3",
-        "laravel/lumen-framework": "^10.0"
+        "laravel/lumen-framework": "^10.0",
+        "tymon/jwt-auth": "^2.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

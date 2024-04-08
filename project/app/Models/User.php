@@ -8,16 +8,18 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * @property int $id Идентификатор пользователя
  * @property string $first_name Имя пользователя
  * @property string $last_name Фамилия пользователя
  * @property string $email Электронная почта
+ * @property string $password Пароль
  * @property bool $is_admin Статус администратора
  * @property int $points Баллы пользователя
  */
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -30,6 +32,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'first_name',
         'last_name',
         'email',
+        'password',
         'is_admin',
         'points'
     ];
@@ -39,5 +42,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var string[]
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'password'
+    ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }
