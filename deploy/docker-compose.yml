@@ -13,6 +13,8 @@ services:
       - "XDG_CONFIG_HOME=/app"
     ports:
       - "80:80"
+    networks:
+      - lumen_network
     depends_on:
       - lumen
 
