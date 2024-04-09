@@ -16,21 +16,49 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'api'], function () {
-    Route::post('/users/register', 'UserController@register');
-    Route::put('/users/{id}', 'UserController@update');
-    Route::delete('/users/{id}', 'UserController@delete');
-    Route::get('/users', 'UserController@getAllUsers');
+    Route::post('/users/register', [
+        'middleware' => 'guest',
+        'uses' => 'UserController@register'
+    ]);
+    Route::put('/users/{id}', [
+        'middleware' => 'owner',
+        'uses' => 'UserController@update'
+    ]);
+    Route::delete('/users/{id}', [
+        'middleware' => 'owner',
+        'uses' => 'UserController@delete'
+    ]);
+    Route::get('/users', [
+        'middleware' => 'admin',
+        'uses' => 'UserController@getAllUsers'
+    ]);
 
-    Route::get('/lottery_games', 'LotteryGameController@getAllGames');
-    Route::post('/lottery_game_matches', 'LotteryGameController@createMatch');
-    Route::put('/lottery_game_matches/{id}', 'LotteryGameController@finishMatch');
-    Route::post('/lottery_game_match_users', 'LotteryGameController@createMatchUser');
-    Route::get('/lottery_game_matches/{game_id}', 'LotteryGameController@getMatchesByGameId');
+    Route::get('/lottery_games', [
+        'uses' => 'LotteryGameController@getAllGames'
+    ]);
+    Route::post('/lottery_game_matches', [
+        'middleware' => 'admin',
+        'uses' => 'LotteryGameController@createMatch'
+    ]);
+    Route::put('/lottery_game_matches/{id}', [
+        'middleware' => 'admin',
+        'uses' => 'LotteryGameController@finishMatch'
+    ]);
+    Route::post('/lottery_game_match_users', [
+        'middleware' => 'owner',
+        'uses' => 'LotteryGameController@createMatchUser'
+    ]);
+    Route::get('/lottery_game_matches/{game_id}', [
+        'uses' => 'LotteryGameController@getMatchesByGameId'
+    ]);
 
     Route::group([
         'prefix' => 'auth'
     ], function () {
-        Route::post('/login', 'AuthController@login');
+        Route::post('/login', [
+            'middleware' => 'guest',
+            'uses' => 'AuthController@login'
+        ]);
         Route::post('/logout', 'AuthController@logout');
         Route::post('/refresh', 'AuthController@refresh');
         Route::get('/me', 'AuthController@me');
