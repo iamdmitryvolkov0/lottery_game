@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\LotteryGameActions\CreateLotteryGameMatchAction;
 use App\Actions\LotteryGameActions\CreateLotteryGameMatchUsersAction;
-use App\Actions\LotteryGameActions\FinishLotteryGameAction;
+use App\Actions\LotteryGameActions\FinishLotteryGameMatchAction;
 use App\Actions\LotteryGameActions\GetAllLotteryGamesAction;
 use App\Actions\LotteryGameActions\GetLotteryGameMatchByGameIdAction;
 use App\Models\LotteryGame;
@@ -26,7 +26,7 @@ class LotteryGameController extends Controller
         return $action->execute($request->query());
     }
 
-    public function finishMatch(int $id, FinishLotteryGameAction $action, Request $request): string|LotteryGame
+    public function finishMatch(int $id, FinishLotteryGameMatchAction $action, Request $request): string|LotteryGame
     {
         return $action->execute($id, $request->query());
     }

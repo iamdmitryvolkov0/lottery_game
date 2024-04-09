@@ -16,6 +16,7 @@ use Laravel\Lumen\Auth\Authorizable;
  * @property Carbon $start_date Дата начала
  * @property int $start_time Время начала
  * @property int $winner_id Идентификатор победителя
+ * @property bool $is_finished Статус матча
  */
 class LotteryGameMatch extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -30,7 +31,8 @@ class LotteryGameMatch extends Model implements AuthenticatableContract, Authori
         'game_id',
         'start_date',
         'start_time',
-        'winner_id'
+        'winner_id',
+        'is_finished'
     ];
 
     /**
