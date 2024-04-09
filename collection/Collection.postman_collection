@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "e45b6ad6-5472-4511-8700-35d8e76d2374",
+		"name": "Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26020462"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/users/register?first_name=Dmitry&last_name=Volkov&email=iamdmitryvolkov@gmail.com&password=lvbnhbq2036",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"users",
+						"register"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "Dmitry"
+						},
+						{
+							"key": "last_name",
+							"value": "Volkov"
+						},
+						{
+							"key": "email",
+							"value": "iamdmitryvolkov@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "lvbnhbq2036"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "iamdmitryvolkov@gmail.com",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "lvbnhbq2036",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1/api/auth/login?email=iamdmitryvolkov@gmail.com&password=lvbnhbq2036",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "iamdmitryvolkov@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "lvbnhbq2036"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzEyNTc5NzYzLCJleHAiOjE3MTI1ODMzNjMsIm5iZiI6MTcxMjU3OTc2MywianRpIjoiUW9RRGRQNjRMWHFBWVpDVCIsInN1YiI6IjEyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.ZPeUPo8MN5D5yWWUzKOcLvyOKQf5vCyQz5gvRb1Ahu4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/auth/logout",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Authorized User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzEyNTc5MTU5LCJleHAiOjE3MTI1ODI3NTksIm5iZiI6MTcxMjU3OTE1OSwianRpIjoiaW9UN2djWHNDVUNIZU9zRyIsInN1YiI6IjEyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.HANO3kfnqE3cQZzuuLR4Vl2KKl7xzOLilIpIQF2TH_A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/auth/me",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/users/6?first_name=Oleg&last_name=Nochleg",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"users",
+						"6"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "Oleg"
+						},
+						{
+							"key": "last_name",
+							"value": "Nochleg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/users/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Lottery Games",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/lottery_games",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"lottery_games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Lottery Game Match",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/lottery_game_matches?game_id&start_date&start_time",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"lottery_game_matches"
+					],
+					"query": [
+						{
+							"key": "game_id",
+							"value": null
+						},
+						{
+							"key": "start_date",
+							"value": null
+						},
+						{
+							"key": "start_time",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finish Lottery Game Match",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/lottery_game_matches/1?is_finished=true",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"lottery_game_matches",
+						"1"
+					],
+					"query": [
+						{
+							"key": "is_finished",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Lottery Game Match User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/lottery_game_match_users?user_id=1&lottery_game_match_id=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"lottery_game_match_users"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "lottery_game_match_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzEyNjM2Njk1LCJleHAiOjE3MTI2NDAyOTYsIm5iZiI6MTcxMjYzNjY5NiwianRpIjoiUUFxM2ZzR2p1WVQyeHVZeiIsInN1YiI6IjEyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.RBjW0g3RezDsWpKT-YDL0a_KpYbYvu6Od6RDM12oO24",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/users",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Lottery Game Matches By Game ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1/api/lottery_game_matches?game_id=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"lottery_game_matches"
+					],
+					"query": [
+						{
+							"key": "game_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
