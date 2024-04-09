@@ -15,7 +15,6 @@ class CreateLotteryGameMatchAction
             'game_id' => ['required', 'integer'],
             'start_date' => ['required', 'date'],
             'start_time' => ['required', 'integer'],
-            'winner_id' => ['required', 'integer'],
         ]);
 
         if ($validator->fails()) {
@@ -30,7 +29,6 @@ class CreateLotteryGameMatchAction
             'game_id' => $data['game_id'],
             'start_date' => $data['start_date'],
             'start_time' => $data['start_time'],
-            'winner_id' => $data['winner_id'],
         ]);
     }
 }
