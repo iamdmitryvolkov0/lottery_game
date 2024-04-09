@@ -9,6 +9,9 @@ class GetAllLotteryGamesAction
 {
     public function execute(): Collection
     {
-        return LotteryGame::all();
+        return LotteryGame::with('matches')
+            ->orderBy('start_date')
+            ->orderBy('start_time')
+            ->get();
     }
 }

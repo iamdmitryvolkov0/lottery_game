@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Lumen\Auth\Authorizable;
 
 /**
@@ -38,4 +39,9 @@ class LotteryGame extends Model implements AuthenticatableContract, Authorizable
      * @var string[]
      */
     protected $hidden = [];
+
+    public function wonMatches(): HasMany
+    {
+        return $this->hasMany(LotteryGameMatch::class);
+    }
 }

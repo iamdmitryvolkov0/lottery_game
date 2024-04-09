@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -46,12 +47,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'password'
     ];
 
-    public function getJWTIdentifier()
+    public function wonMatches(): HasMany
+    {
+        return $this->hasMany(LotteryGameMatch::class, 'winner_id', 'id');
+    }
+
+    public function getJWTIdentifier(): mixed
     {
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }

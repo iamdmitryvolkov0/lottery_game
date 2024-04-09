@@ -10,7 +10,6 @@ class CreateLotteryGameMatchUsersAction
 {
     public function execute(array $data): JsonResponse|LotteryGameMatchUser
     {
-
         $validator = Validator::make($data, [
             'user_id' => ['required', 'integer'],
             'lottery_game_match_id' => ['required', 'integer'],
